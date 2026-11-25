@@ -1,0 +1,13 @@
+[Unit]
+Description=KeyRelay receiver
+After=keyrelay-gadget.service network-online.target tailscaled.service
+Wants=network-online.target
+Requires=keyrelay-gadget.service
+
+[Service]
+ExecStart=/usr/local/bin/keyrelay-receiver /etc/keyrelay/receiver.json
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

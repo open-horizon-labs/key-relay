@@ -1,0 +1,12 @@
+[Unit]
+Description=KeyRelay USB gadget (FIDO HID)
+After=sys-kernel-config.mount
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/keyrelay-setup-gadget
+
+[Install]
+WantedBy=multi-user.target

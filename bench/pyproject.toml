@@ -1,0 +1,16 @@
+[project]
+name = "keyrelay-bench"
+version = "0.1.0"
+description = "Bench driver that plays Chrome and the receiver for phone-side KeyRelay tests"
+requires-python = ">=3.11"
+dependencies = ["fido2==2.2.1"]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = [".", "../rp"]
+testpaths = ["tests"]

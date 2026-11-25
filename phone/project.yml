@@ -1,0 +1,42 @@
+# Generate the Xcode project with: xcodegen generate  (run in phone/)
+# The signing team is passed at build time (DEVELOPMENT_TEAM=...) and is not stored here.
+name: KeyRelayPhone
+options:
+  bundleIdPrefix: org.openhorizonlabs.keyrelay
+  deploymentTarget:
+    iOS: "17.0"
+packages:
+  YubiKit:
+    url: https://github.com/Yubico/yubikit-swift
+    exactVersion: 1.5.0
+  RelayCore:
+    path: RelayCore
+targets:
+  KeyRelayPhone:
+    type: application
+    platform: iOS
+    sources: [KeyRelayPhone]
+    dependencies:
+      - package: YubiKit
+      - package: RelayCore
+    info:
+      path: KeyRelayPhone/Info.plist
+      properties:
+        CFBundleDisplayName: KeyRelay
+        CFBundleShortVersionString: "0.1"
+        CFBundleVersion: "1"
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        NFCReaderUsageDescription: KeyRelay talks to your YubiKey over NFC to approve sign-ins.
+        NSLocalNetworkUsageDescription: KeyRelay connects to your KeyRelay receiver on your private network.
+        com.apple.developer.nfc.readersession.iso7816.select-identifiers: [A0000006472F0001]
+    entitlements:
+      path: KeyRelayPhone/KeyRelayPhone.entitlements
+      properties:
+        com.apple.developer.nfc.readersession.formats: [TAG]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.openhorizonlabs.keyrelay.phone
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "1"

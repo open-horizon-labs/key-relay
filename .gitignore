@@ -1,0 +1,20 @@
+# Build output
+receiver/target/
+phone/RelayCore/.build/
+phone/*.xcodeproj/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Local test data and tooling
+rp/data/
+.claude/
+.DS_Store
+
+notes/

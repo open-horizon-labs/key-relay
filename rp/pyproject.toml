@@ -1,0 +1,16 @@
+[project]
+name = "keyrelay-test-rp"
+version = "0.1.0"
+description = "Local WebAuthn relying party that verifies KeyRelay registrations and sign-ins"
+requires-python = ">=3.11"
+dependencies = ["fido2==2.2.1"]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
